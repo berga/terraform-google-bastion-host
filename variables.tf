@@ -235,3 +235,9 @@ variable "create_firewall_rule" {
   description = "If we need to create the firewall rule or not."
   default     = true
 }
+
+variable "resource_policies" {
+  type        = list(string)
+  description = "Allow attaching resource policies to the template"
+  default     = []
+}

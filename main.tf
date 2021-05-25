@@ -43,8 +43,8 @@ resource "google_service_account" "bastion_host" {
 }
 
 module "instance_template" {
-  source  = "terraform-google-modules/vm/google//modules/instance_template"
-  version = "~> 6.0"
+  source  = "github.com/berga/terraform-google-vm.git//modules/instance_template?ref=feature/resource_policies"
+  # version = "~> 6.0"
 
   name_prefix        = var.name_prefix
   project_id         = var.project
@@ -63,6 +63,7 @@ module "instance_template" {
   source_image_project = var.image_project
   startup_script       = var.startup_script
   preemptible          = var.preemptible
+  resource_policies    = var.resource_policies
 
   tags   = var.tags
   labels = var.labels
